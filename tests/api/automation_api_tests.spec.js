@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-import { AutomationAPI } from '../../helpers/AutomationAPI';
+import  AutomationAPI  from '../../helpers/AutomationAPI';
 
 test('Api tests', async({request})=> {
     const api = new AutomationAPI(request);

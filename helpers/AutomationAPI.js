@@ -21,6 +21,6 @@ export default class AutomationAPI {
 
     async getAllBrands(){
          const responseAllBrands = await this.request.get('/api/brandsList');
-        return responseSearchProduct;
+        return responseAllBrands;
     }
 }
