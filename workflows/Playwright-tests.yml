@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
         BASE_URL: ${{vars.BASE_URL}}
-        TEST_PASWORD: ${{secrets.TEST_PASSWORD}}
+        TEST_PASSWORD: ${{secrets.TEST_PASSWORD}}
     steps:
-      - uses: action/checkout@v4
-      - uses: action/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
@@ -29,7 +29,7 @@ jobs:
 
       - name: Upload playwright report
         uses: actions/upload-artifact@v4
-        if: ${{cancelled()}}
+        if: ${{ !cancelled()}}
         with:
           name: playwright-report
           path: playwright-report/
