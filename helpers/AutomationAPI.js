@@ -23,4 +23,14 @@ export default class AutomationAPI {
          const responseAllBrands = await this.request.get('/api/brandsList');
         return responseAllBrands;
     }
+
+    async deleteUser(uniqueEmail, password){
+        const responseDeleteUser = await this.request.delete('/api/deleteAccount', {
+            form: {
+                email: uniqueEmail,
+                password: password
+            } 
+        });
+        return responseDeleteUser;
+    }
 }
