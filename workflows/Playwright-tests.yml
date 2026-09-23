@@ -24,6 +24,15 @@ jobs:
       - name: install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Check TEST_PASSWORD
+        run: |
+          if [ -z "$TEST_PASSWORD" ]; then
+            echo "TEST_PASSWORD is missing"
+            exit 1
+          else
+            echo "TEST_PASSWORD is available"
+          fi
+
       - name: Run Playwright tests
         run: npx playwright test
 
