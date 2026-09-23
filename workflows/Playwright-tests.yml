@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         BASE_URL: ${{vars.BASE_URL}}
-        TEST_PASWWORD: ${{secrets.TEST_PASSWORD}}
+        TEST_PASWORD: ${{secrets.TEST_PASSWORD}}
     steps:
       - uses: action/checkout@v4
       - uses: action/setup-node@v4
@@ -23,23 +23,6 @@ jobs:
 
       - name: install Playwright browsers
         run: npx playwright install --with-deps
-
-      - name: Check environment variables
-        run: |
-          if [ -z "$BASE_URL" ]; then
-            echo "BASE_URL is missing"
-            exit 1
-          else
-            echo "BASE_URL is available"
-          fi
-
-          if [ -z "$TEST_PASSWORD" ]; then
-            echo "TEST_PASSWORD is missing"
-            exit 1
-          else
-            echo "TEST_PASSWORD is available"
-          fi
-
 
       - name: Run Playwright tests
         run: npx playwright test
