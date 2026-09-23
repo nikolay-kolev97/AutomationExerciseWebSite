@@ -42,7 +42,6 @@ test.describe("Registration / Login Form", ()=> {
         await expect(accountCreatePage.headingText).toBeVisible();
         await accountCreatePage.continueButton.click();
         await expect(page).toHaveURL('/');
-
         
     })
     
