@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-test("Open web site", async({page})=> {
+test("Open web site @smoke", async({page})=> {
     await page.goto('/');
     const consentButton = page.getByRole('button', { name: 'Consent' });
     try {

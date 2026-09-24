@@ -10,7 +10,8 @@ const user = {
     mobileNumber: '3224422',
     birthDay: '10',
     birthMonth: 'May',
-    birthYear: '2000'
+    birthYear: '2000',
+    title: 'Mr'
 };
 
 export default user;

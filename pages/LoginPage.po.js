@@ -5,6 +5,7 @@ export default class LoginPage {
         this.page = page;
     }
 
+    //Sign up Form --------------------------------------------------------------
     get nameField(){
         return this.page.locator('[data-qa="signup-name"]');
     }
@@ -25,8 +26,23 @@ export default class LoginPage {
         return this.page.getByRole('button', {name: "Signup"})
     }
 
+    // Login form--------------------------------------------------------------------
     get loginButton(){
         return this.page.getByRole('button', {name: "Login"})
     }
+
+    get headingTextLogin(){
+        return this.page.getByRole('heading', {name: "Login to your account"})
+    }
+
+    get emailLoginField(){
+        return this.page.locator('[data-qa="login-email"]')
+    }
+
+    get passwordLoginField(){
+        return this.page.locator('[data-qa="login-password"]')
+    }
+
+
 
 }
