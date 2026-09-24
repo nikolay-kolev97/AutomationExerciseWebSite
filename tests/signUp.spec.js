@@ -6,7 +6,7 @@ import user from '../test-data/user'
 
 test.describe("Registration / Login Form", ()=> {
 
-    test('should register a new user successfully', async({loginResource, page})=> {
+    test('should register a new user successfully @smoke', async({loginResource, page})=> {
         const loginPage = new LoginPage(page);
         const signUpPage = new SignUpPage(page);
         const accountCreatePage = new AccountCreatePage(page);
