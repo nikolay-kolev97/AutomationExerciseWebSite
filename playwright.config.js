@@ -36,8 +36,26 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup',
+      testMatch: /.*\.setup\.js/,  //execute files with .setup
+      teardown: 'cleanup',
+    },
+    {
+      name: 'cleanup',
+      testMatch: /.*\.teardown\.js/,
+    },
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      testIgnore: /authenticated\/.*\.spec\.js/,           // ignore only tests in folder authenticated
+      use: {...devices['Desktop Chrome']},
+    },
+    {
+      name: 'authenticated',
+      testMatch: /authenticated\/.*\.spec\.js/,            //execute tests only in authenticated folder
+      use: { ...devices['Desktop Chrome'],
+            storageState: 'playwright/.auth/user.json',    // use the state when run the project
+          },
+      dependencies: ['setup'],    // first execute project: setup, after that tihs project
     },
 
     // {

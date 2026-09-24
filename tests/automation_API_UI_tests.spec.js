@@ -3,9 +3,9 @@ import HomePage from '../pages/HomePage.po';
 import LoginPage from '../pages/LoginPage.po';
 import user from '../test-data/user';
 
-test.describe('Login Form', ()=> {
+test.describe('API-UI tests', ()=> {
 
-    test("Create user from API and login in UI @smoke", async({createUser, page})=> {
+    test("Create user from API , login in UI and delete the user @smoke", async({createUser, page})=> {
         const loginPage = new LoginPage(page);
         const homePage = new HomePage(page);
 
@@ -15,6 +15,7 @@ test.describe('Login Form', ()=> {
         await loginPage.loginButton.click();
         await expect(page).toHaveURL('/');
         await expect(homePage.textLoggedIn).toContainText(createUser.uniqueUsername);
+
     })
 
 })

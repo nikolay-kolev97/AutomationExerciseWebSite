@@ -4,7 +4,7 @@ import LoginPage from '../pages/LoginPage.po.js';
 import SignUpPage from '../pages/SignUpPage.po.js';
 import user from '../test-data/user'
 
-test.describe("Registration / Login Form", ()=> {
+test.describe("Registration form", ()=> {
 
     test('should register a new user successfully @smoke', async({loginResource, page})=> {
         const loginPage = new LoginPage(page);
