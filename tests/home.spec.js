@@ -1,8 +1,4 @@
 import {test, expect} from '@playwright/test';
-import path from 'path';
-import HomePage from '../pages/HomePage.po';
-import ContactUsPage from '../pages/ContactUsPage.po';
-
 
 test.describe("Basic tests" , () => {
 
