@@ -4,7 +4,7 @@ import AutomationAPI from '../helpers/AutomationAPI';
 import user from '../test-data/user'
 
 export const test = base.extend({
-    // Go to registration page and create user. After that delete the user.
+    // Go to registration page and create user. Make the tests. After that delete the user.
     loginResource: async({page, request}, use)=>{
         const homePage = new HomePage(page);
         const api = new AutomationAPI(request);
@@ -34,7 +34,7 @@ export const test = base.extend({
        const responseDeleteUser = await api.deleteUser(uniqueEmail, user.password);
        expect(responseDeleteUser.status()).toBe(200);
     },
-    //API Create user and login
+    //API Create user and login. Make tests. After that delete the user
     createUser: async({request, page}, use)=> {
         const homePage = new HomePage(page);
         const api = new AutomationAPI(request);

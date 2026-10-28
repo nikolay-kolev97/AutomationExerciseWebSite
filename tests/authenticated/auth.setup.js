@@ -42,7 +42,7 @@ test("Auth setup", async({page, request})=> {
     await expect(homePage.textLoggedIn).toContainText(uniqueUsername);
 
     await page.context().storageState({
-    path: 'playwright/.auth/user.json'
+        path: 'playwright/.auth/user.json'
     })
 
 
