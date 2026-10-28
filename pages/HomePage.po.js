@@ -9,6 +9,10 @@ export default class HomePage {
         return this.page.getByRole('link', {name: " Signup / Login"})
     }
 
+    get buttonContactUs(){
+        return this.page.getByRole('link', { name: 'Contact us' });
+    }
+
     get textLoggedIn(){
         return this.page.locator('a').filter({hasText: "Logged in as"})
     }
