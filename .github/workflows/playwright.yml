@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request: 
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -24,6 +28,18 @@ jobs:
           node-version: lts/*
           cache: 'npm'
 
+      - name: Validate environment
+        run: |
+          if [-z "$BASE_URL" ]; then
+            echo "BASE_URL is missing"
+            exit 1
+          fi
+
+          if [-z "$TEST_PASSWORD" ]; then
+            echo "TEST_PASSWORD is missing"
+            exit 1
+          fi
+
       - name: install dependencies
         run: npm ci
 
@@ -31,6 +47,11 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
+        if: github.event_name == 'pull_request'
+        run: npx playwright test --project=${{matrix.project}} --grep @smoke
+
+      - name: Run Playwright tests
+        if: github.event_name != 'pull_request'
         run: npx playwright test --project=${{matrix.project}}
 
       - name: Upload playwright report
@@ -40,3 +61,12 @@ jobs:
           name: playwright-report-${{matrix.project}}
           path: playwright-report/
           retention-days: 30
+
+  deploy-production:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment
+        run: echo "Simulation only - no real deployment"
+    
