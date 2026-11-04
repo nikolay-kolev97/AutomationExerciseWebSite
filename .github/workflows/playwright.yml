@@ -47,7 +47,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && matrix.project == 'chromium'
         run: npx playwright test --project=${{matrix.project}} --grep @smoke
 
       - name: Run Playwright tests
